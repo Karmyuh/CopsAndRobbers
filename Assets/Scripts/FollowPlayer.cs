@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    Transform player;
+    GameObject player;
+    Collision col;
     float rotSpeed = 3.0f, moveSpeed = 3.0f;
+
+    private void Awake()
+    {
+        col = new Collision();
+    }
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > 2)
+        if (Vector3.Distance(transform.position, player.transform.position) > 2)
         {
             Walk();
         }
-       
     }
-
     void Walk() 
     {
         /* Look at Player*/
         transform.rotation = Quaternion.Slerp(transform.rotation
-        , Quaternion.LookRotation(player.position - transform.position)
+        , Quaternion.LookRotation(player.transform.position - transform.position)
         , rotSpeed * Time.deltaTime);
 
         /* Move at Player*/

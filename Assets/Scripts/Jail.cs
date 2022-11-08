@@ -9,8 +9,6 @@ public class Jail : MonoBehaviour
         if (collision.gameObject.tag == "Robber")
         {
             collision.gameObject.GetComponent<FollowPlayer>().enabled = false;
-            
-            
         }
     }
 }

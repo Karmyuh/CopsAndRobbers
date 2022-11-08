@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rigidBody;
     private Vector3 _moveVector;
 
-
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 direction = Vector3.RotateTowards(transform.forward, _moveVector, _rotateSpeed * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(direction);
         }
-
         _rigidBody.MovePosition(_rigidBody.position + _moveVector);
     }
 }
